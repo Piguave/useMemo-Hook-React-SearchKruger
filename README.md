@@ -4,7 +4,7 @@
 
 > Project Using the Context Hook - React.js
 
-<img src="./src/assets/playground3.png" height="300px">
+<img src="./src/assets/playground5.png" height="300px">
 
 ## Built with 
 
@@ -16,12 +16,12 @@
 
 ## Live Demo
 
-- [Live demo link ](https://use-context-hook-react.vercel.app/create)
+- [Live demo link ](https://use-memo-hook-react-search-kruger.vercel.app/)
 ## Run it locally
 
  ### Setup
 
- - Clone this repo using `git clone https://github.com/Piguave/useContext-Hook---React`
+ - Clone this repo using `git clone https://github.com/Piguave/useMemo-Hook-React-SearchKruger`
 
  ### Commands
 
