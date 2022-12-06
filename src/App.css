@@ -1,3 +1,14 @@
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-image: url(./assets/fondo2.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+  font-size: calc(10px + 2vmin);
+}
+
 .App {
   text-align: center;
 }
@@ -6,7 +17,33 @@
   height: 40vmin;
   pointer-events: none;
 }
+.img-container {
+  padding-bottom: 0px !important;
+  padding-top: 0px !important;
+  width: 150px;
 
+}
+.footer {
+  width: 100%;
+
+	height: 14px;
+
+	padding: 4px 0px;
+
+	background: #fdf59a;
+
+	font-family: "century gothic","arial";
+
+	color: #000000;
+
+	font-size: 11px;
+
+    bottom:0px;
+
+	margin-top: -14px;
+
+	clear:both;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

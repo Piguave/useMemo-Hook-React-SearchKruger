@@ -1,9 +1,14 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useState } from "react";
-import SearchBar from "./components/searchbar";
 
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
+import SearchBar from "./components/searchbar";
+import NavbarKruger from "./components/NavbarKruger";
 import styled from "styled-components";
+import Footer from "./components/Footer";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Col, Container, Row } from "react-bootstrap";
 
 const StyledButton = styled.button`
   padding: 10px;
@@ -98,6 +103,23 @@ function App() {
 
   const [selection, setSelection] = useState(null);
   const [currentOption, setCurrentOption] = useState("all");
+  const [list, setList] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await Axios({
+          url: "https://pokeapi.co/api/v2/pokemon/",
+        });
+
+        setList((response.data.results).json);
+        console.log(response.data.results);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, [setList]);
 
   function handleClick(e) {
     const location = e.target.name;
@@ -130,22 +152,48 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <StyledButton name="all" onClick={handleClick}>
-        Search in All
-      </StyledButton>
-      <StyledButton name="emails" onClick={handleClick}>
-        Search in Emails
-      </StyledButton>
-      <StyledButton name="calendar" onClick={handleClick}>
-        Search in Calendar
-      </StyledButton>
-      <StyledButton name="people" onClick={handleClick}>
-        Search in People
-      </StyledButton>
-      {selection ? <div>You selected: {selection.title}</div> : ""}
-      <SearchBar items={data} onItemSelected={handleOnItemSelected} />
-    </div>
+    <>
+      <NavbarKruger />
+      <div className="App">
+        <Container className="pt-5">
+          <Row>
+            <Col>
+              <StyledButton name="all" onClick={handleClick}>
+                Search in All
+              </StyledButton>
+              <StyledButton name="emails" onClick={handleClick}>
+                Search in Emails
+              </StyledButton>
+              <StyledButton name="calendar" onClick={handleClick}>
+                Search in Calendar
+              </StyledButton>
+              <StyledButton name="people" onClick={handleClick}>
+                Search in People
+              </StyledButton>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              {selection ? <div>You selected: {selection.title}</div> : ""}
+              <SearchBar items={data} onItemSelected={handleOnItemSelected} />
+            </Col>
+          </Row>
+        </Container>
+        <Container>
+        <div>{list}</div>
+        {/* <div>
+        {list.map((item) => (
+          <div key={item.name}>
+            <h3>{item.name}</h3>
+            <p>{item}</p>
+          </div>
+        ))}
+      </div> */}
+
+        </Container>
+      </div>
+
+    </>
   );
 }
 
