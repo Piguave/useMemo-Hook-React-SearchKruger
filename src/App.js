@@ -180,7 +180,7 @@ function App() {
           </Row>
         </Container>
         <Container>
-        <div>{list}</div>
+        <div>{list}</div>  
         {/* <div>
         {list.map((item) => (
           <div key={item.name}>
@@ -189,7 +189,7 @@ function App() {
           </div>
         ))}
       </div> */}
-
+ 
         </Container>
       </div>
 
